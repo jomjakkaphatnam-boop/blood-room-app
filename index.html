@@ -12,9 +12,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#c8102e">
 <style>
-html,body{margin:0;height:100%;background:#c8102e}
-iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff6f6}
-#msg{display:none;color:#fff;font:16px sans-serif;padding:24px}
+html,body{margin:0;padding:0;width:100%;min-height:100%;background:#fff;overflow:hidden;overscroll-behavior:none}
+@media(prefers-color-scheme:dark){html,body{background:#271a1c}}
+iframe{position:fixed;top:0;left:0;width:100vw;height:100vh;border:0;display:block;background:transparent}
+@supports (height:100dvh){iframe{height:100dvh}}
+#msg{display:none;color:#fff;font:16px sans-serif;padding:24px;background:#c8102e;min-height:100vh}
 </style></head><body>
 <div id="msg">ยังไม่ได้ตั้งค่า APP_URL ในไฟล์ config.js (ใส่ลิงก์ Web app ของ Apps Script ที่ลงท้ายด้วย /exec)</div>
 <iframe id="f" allow="clipboard-write" title="ห้องรับบริจาคโลหิต"></iframe>
