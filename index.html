@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ห้องรับบริจาคโลหิต</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ห้องรับบริจาคเลือด">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#c8102e">
+<style>
+html,body{margin:0;height:100%;background:#c8102e}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff6f6}
+#msg{display:none;color:#fff;font:16px sans-serif;padding:24px}
+</style></head><body>
+<div id="msg">ยังไม่ได้ตั้งค่า APP_URL ในไฟล์ config.js (ใส่ลิงก์ Web app ของ Apps Script ที่ลงท้ายด้วย /exec)</div>
+<iframe id="f" allow="clipboard-write" title="ห้องรับบริจาคโลหิต"></iframe>
+<script src="config.js"></script>
+<script>
+const APP_URL = window.APP_URL || "";
+if (APP_URL) document.getElementById("f").src = APP_URL;
+else { document.getElementById("f").style.display = "none"; document.getElementById("msg").style.display = "block"; }
+</script></body></html>
