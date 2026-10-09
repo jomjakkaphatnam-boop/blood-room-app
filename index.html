@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ห้องรับบริจาคเลือด">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="theme-color" content="#c8102e">
 <style>
 html,body{margin:0;padding:0;width:100%;min-height:100%;background:#fff;overflow:hidden;overscroll-behavior:none}
@@ -26,6 +26,16 @@ const sc = document.createElement("script");
 sc.src = "config.js?v=" + Date.now();
 sc.onload = start; sc.onerror = start;
 document.head.appendChild(sc);
+function fit() {
+  const f = document.getElementById("f");
+  let h = window.innerHeight;
+  const standalone = window.navigator.standalone || matchMedia("(display-mode: standalone)").matches;
+  const portrait = window.innerHeight > window.innerWidth;
+  if (standalone && portrait) h = Math.max(h, screen.height);
+  f.style.height = h + "px";
+}
+addEventListener("resize", fit); addEventListener("orientationchange", () => setTimeout(fit, 200));
+fit();
 function start() {
   const APP_URL = window.APP_URL || "";
   if (APP_URL) document.getElementById("f").src = APP_URL;
