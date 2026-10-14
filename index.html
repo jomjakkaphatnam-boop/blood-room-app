@@ -31,7 +31,9 @@ function fit() {
   let h = window.innerHeight;
   const standalone = window.navigator.standalone || matchMedia("(display-mode: standalone)").matches;
   const portrait = window.innerHeight > window.innerWidth;
-  if (standalone && portrait) h = Math.max(h, screen.height);
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  /* ใช้เฉพาะ iOS: บน Android screen.height รวมแถบระบบ ทำให้แถบเมนูล่างหลุดจอ */
+  if (ios && standalone && portrait) h = Math.max(h, screen.height);
   f.style.height = h + "px";
 }
 addEventListener("resize", fit); addEventListener("orientationchange", () => setTimeout(fit, 200));
